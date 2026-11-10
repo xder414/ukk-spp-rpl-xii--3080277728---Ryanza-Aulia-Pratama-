@@ -1,28 +1,22 @@
+-- Active: 1794275255772@@127.0.0.1@3306@test
 
-CREATE DATABASE pembayaran_sekolah(
-  spp int NOT null (100),
-  kelas varchar (100),
-  petugas varchar (100),
-  siswa varchar (50),
-  pembayaran integer (50)
+CREATE DATABASE pembayaran_sekolah;
+
+CREATE TABLE spp (
+  id_spp INT PRIMARY KEY AUTO_INCREMENT,
+  tahun INT NOT NULL,
+  nominal INT NOT NULL,
+  keterangan  VARCHAR(100),
+  created_at TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
+  updated_at TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
 );
 
-
-CREATE TABLE `spp` (
-  `id_spp` INT PRIMARY KEY AUTO_INCREMENT,
-  `tahun` INT NOT NULL,
-  `nominal` INT NOT NULL,
-  `keterangan` VARCHAR(100),
-  `created_at` TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
-  `updated_at` TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
-);
-
-CREATE TABLE `kelas` (
-  `id_kelas` INT PRIMARY KEY AUTO_INCREMENT,
-  `nama_kelas` VARCHAR(15) NOT NULL,
-  `kompetensi_keahlian` VARCHAR(50) NOT NULL,
-  `created_at` TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
-  `updated_at` TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
+CREATE TABLE kelas (
+  id_kelas INT PRIMARY KEY AUTO_INCREMENT,
+  nama_kelas VARCHAR(15) NOT NULL,
+  kompetensi_keahlian VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
+  updated_at TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
 );
 
 CREATE TABLE `petugas` (
@@ -60,6 +54,7 @@ CREATE TABLE `pembayaran` (
   `updated_at` TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
 );
 
+SELECT * From pembayaran;
 CREATE INDEX `idx_siswa_nama` ON `siswa` (`nama`);
 
 CREATE INDEX `idx_pembayaran_tgl` ON `pembayaran` (`tgl_bayar`);
